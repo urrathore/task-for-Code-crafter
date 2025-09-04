@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import GameHeader from "../GameHeader.jsx";
 import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
-import UI from "./UI.jsx";
+import UI from "./Ui.jsx";
 
 function GamePage() {
   const canvasRef = useRef(null);

@@ -24,7 +24,9 @@ function UI({
   setBrushSize,
   isDrawer,
   currentWord,
-  gameStarted
+  gameStarted,
+  setIsDrawer,      // Add this
+  setCurrentWord,
 
 }) {
   const [drawerName, setDrawerName] = useState(localStorage.getItem("drawerName"));
@@ -101,7 +103,7 @@ function UI({
     };
 
     handleRoundMessages();
-  }, [chatMessages, playerName, roomId, canvasRef, setIsDrawer, setCurrentWord]);
+  }, [chatMessages, playerName, roomId, canvasRef,]);
 
 
 
