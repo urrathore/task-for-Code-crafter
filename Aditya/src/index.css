@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+
+/* Doodle letters - rainbow neon glow + flicker */
+.neon-letter {
+  color: #fff;
+  text-shadow:
+    0 0 10px #ff3,
+    0 0 20px #f0f,
+    0 0 30px #0ff,
+    0 0 50px #0f0,
+    0 0 100px #f0f;
+  animation: neon-glow 3s infinite alternate, flicker 2s infinite;
+  display: inline-block;
+}
+
+/* Rush letters - purple neon + faster pulse + flicker */
+.neon-letter-rush {
+  color: #fff;
+  text-shadow:
+    0 0 10px #a855f7,
+    0 0 20px #a855f7,
+    0 0 30px #c084fc,
+    0 0 40px #a855f7,
+    0 0 60px #c084fc;
+  animation: neon-pulse 1.2s infinite alternate, flicker 1.5s infinite;
+  display: inline-block;
+}
+
+/* Rainbow glow animation */
+@keyframes neon-glow {
+  0% {
+    text-shadow: 0 0 10px #ff3, 0 0 20px #f0f, 0 0 30px #0ff, 0 0 50px #0f0, 0 0 100px #f0f;
+  }
+  50% {
+    text-shadow: 0 0 20px #0ff, 0 0 30px #ff0, 0 0 40px #f0f, 0 0 60px #0f0, 0 0 120px #ff0;
+  }
+  100% {
+    text-shadow: 0 0 10px #f0f, 0 0 20px #0ff, 0 0 30px #ff0, 0 0 50px #0f0, 0 0 100px #f0f;
+  }
+}
+
+/* Purple pulse animation */
+@keyframes neon-pulse {
+  0% {
+    text-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7, 0 0 30px #c084fc, 0 0 40px #a855f7, 0 0 60px #c084fc;
+  }
+  50% {
+    text-shadow: 0 0 20px #c084fc, 0 0 30px #a855f7, 0 0 40px #c084fc, 0 0 60px #a855f7, 0 0 80px #c084fc;
+  }
+  100% {
+    text-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7, 0 0 30px #c084fc, 0 0 40px #a855f7, 0 0 60px #c084fc;
+  }
+}
+
+/* Flicker effect to simulate real neon */
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 22%, 24%, 55% {
+    opacity: 0.7;
+  }
+}
+/* 1. Base gradient background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  overflow-x: hidden;
+  color: white;
+  position: relative;
+}
+
+/* Gradient animation */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 2. Neon floating particles */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,0,255,0.1) 2px, transparent 2px),
+    radial-gradient(circle, rgba(0,255,255,0.1) 2px, transparent 2px);
+  background-size: 50px 50px, 100px 100px, 150px 150px;
+  animation: particleMove 30s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Particle movement */
+@keyframes particleMove {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-50px, 50px); }
+  100% { transform: translate(0,0); }
+}
+
+/* 3. Twinkling stars */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle calc(2s + var(--i)*0.5s) infinite;
+}
+
+/* 4. Shooting neon streaks */
+.streak {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(to bottom, #ff00ff, #00ffff);
+  opacity: 0.3;
+  animation: streakMove linear infinite;
+}
+
+@keyframes streakMove {
+  0% { transform: translateY(-150px) rotate(0deg); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(100vh) rotate(20deg); opacity: 0; }
+}
+
+/* Ensure main content & header stay above background */
+header, main, button {
+  position: relative;
+  z-index: 2;
+}
+.neon-title {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(90deg, #ff4dff, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: glow 1.8s ease-in-out infinite alternate;
+  position: relative;
+}
+
+.neon-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, #ff4dff, #00ffff, #ff00ff);
+  border-radius: 2px;
+  animation: glowBar 1.8s linear infinite alternate;
+}
+
+
+@keyframes glowBar {
+  from {
+    box-shadow: 0 0 8px #30d6dc, 0 0 16px #00ffff, 0 0 24px #e2dce2;
+  }
+  to {
+    box-shadow: 0 0 16px #00ffff, 0 0 32px #ff00ff, 0 0 48px #ff4dff;
+  }
+}
+
+.neon-border {
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff, 0 0 30px #ff4dff;
+}
+
+
+/*
+.image{
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  max-width: 250px;
+  max-width: inline-block;
+}
+.image-1{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
