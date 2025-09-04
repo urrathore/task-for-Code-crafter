@@ -1,6 +1,5 @@
-// UI.jsx
 import React, { useState, useEffect } from "react";
-import GameHeader from "../GameHeader.jsx";
+import GameHeader from "./GameHeader.jsx";
 import CanvasArea from "./CanvasArea.jsx";
 import ChatArea from "./ChatArea.jsx";
 import Scoreboard from "./Scoreboard.jsx";
